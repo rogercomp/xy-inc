@@ -4,7 +4,7 @@ Aplicação de Manutenibilidade de POI
 
 Utilizado linguagem C#, ASP NET Core 2, Entity Framework, SQL Server(Express), Code Fisrt, LINQ, MVC 6
 
-Fazer o download do vs2017 code no link abaixo:
+Caso não possua o VS 20017 code faça o download no link abaixo:
 https://code.visualstudio.com/
 
 
