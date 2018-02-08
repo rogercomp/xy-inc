@@ -13,9 +13,9 @@
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
-            Pnt X : <input type="text" name="pntx" value="@ViewData["pntx"]" />           
-            Pnt Y: <input type="text" name="pnty" value="@ViewData["pnty"]" />
-            Distância: <input type="text" name="dist" value="@ViewData["dist"]" />            
+            Pnt X : <input type="number" name="pntx" value="@ViewData["pntx"]" />           
+            Pnt Y: <input type="number" name="pnty" value="@ViewData["pnty"]" pattern="[0-9]+$" />
+            Distância: <input type="number" name="dist" value="@ViewData["dist"]" pattern="[0-9]+$" />            
             <input type="submit" value="Procurar" class="btn btn-default" /><br />
             <a asp-action="Index">Retornar para lista</a>
         </p>
@@ -60,3 +60,7 @@
 }
     </tbody>
 </table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
