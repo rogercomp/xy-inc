@@ -1,0 +1,62 @@
+﻿@model IEnumerable<XYApp.Models.POI>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Listagem POI</h2>
+
+<p>
+    <a asp-action="Create">Criar Novo</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Pnt X : <input type="text" name="pntx" value="@ViewData["pntx"]" />           
+            Pnt Y: <input type="text" name="pnty" value="@ViewData["pnty"]" />
+            Distância: <input type="text" name="dist" value="@ViewData["dist"]" />            
+            <input type="submit" value="Procurar" class="btn btn-default" /><br />
+            <a asp-action="Index">Retornar para lista</a>
+        </p>
+    </div>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.NomePOI)*@
+                    <a asp-action="Index" asp-route-ordem="@ViewData["NomeParm"]">@Html.DisplayNameFor(model => model.NomePOI)</a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PntX)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PntY)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomePOI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PntX)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PntY)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

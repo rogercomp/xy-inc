@@ -1,0 +1,39 @@
+﻿@model XYApp.Models.POI
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+<p class="text-danger">@ViewData["ErrorMessage"]</p>
+<h3>Tem certeza que deseja deletar este registro?</h3>
+<div>
+    <h4>POI</h4>
+    <hr />
+    <dl class="dl-horizontal">       
+        <dt>
+            @Html.DisplayNameFor(model => model.NomePOI)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NomePOI)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PntX)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PntX)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PntY)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PntY)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Deletar" class="btn btn-default" /> |
+        <a asp-action="Index">Retornar para Lista</a>
+    </form>
+</div>

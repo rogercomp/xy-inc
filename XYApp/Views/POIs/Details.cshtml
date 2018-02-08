@@ -1,0 +1,36 @@
+﻿@model XYApp.Models.POI
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>POI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomePOI)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NomePOI)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PntX)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PntX)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PntY)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PntY)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Editar</a> |
+    <a asp-action="Index">Retornar para Lista</a>
+</div>
