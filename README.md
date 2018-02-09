@@ -9,7 +9,7 @@ Caso não possua o VS 20017 code faça o download no link abaixo:
 https://code.visualstudio.com/
 
 
-Abrir o projeto 
+Abrir o projeto XYApp
 
 Abrir a pasta Data na raiz do projeto edite o arquivo POIContexto.cs identificando e modificando a linha abaixo:
 
@@ -18,3 +18,11 @@ Abrir a pasta Data na raiz do projeto edite o arquivo POIContexto.cs identifican
   onde SERVIDOR será o nome do servidor SQL SERVER
   
   compilar e executar o projeto.
+  
+ Teste de Unidade
+ 
+ Utilizado XUnit/Bogus/ para realizar testes de unidade
+ 
+ Abrir pasta do projeto Tests por linha de comando 
+ 
+ executar o comando dotnet test e verificar a execução dos testes
