@@ -10,7 +10,7 @@ namespace XYApp.Data
     public class POIContexto : DbContext
     {
        
-        private readonly string strConexao = "Server=NOTE-INOVE02;Database=DB_XYAPPPOI;Trusted_Connection=True;MultipleActiveResultSets=true";
+        private readonly string strConexao = "Server=SERVIDOR;Database=DB_XYAPPPOI;Trusted_Connection=True;MultipleActiveResultSets=true";
         public POIContexto()
         { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
