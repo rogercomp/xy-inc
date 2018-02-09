@@ -6,11 +6,13 @@ using Microsoft.EntityFrameworkCore;
 using Xunit;
 using XYApp.Models;
 using Bogus;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Tests
 {
     public class UnitTest1
     {
+        #region Testes CRUD
         [Fact(DisplayName = "Nova instância válida")]
         [Trait("Category", "Testes de POI")]
         public void POI_NovaInstancia_DeveRetornarSucesso()
@@ -34,7 +36,7 @@ namespace Tests
             var db = new XYApp.Data.POIContexto();
             var poi = db.POIs.FirstOrDefault();
 
-            Assert.NotNull(poi);           
+            Assert.NotNull(poi);
         }
 
         [Fact(DisplayName = "Atualizar Nome POI")]
@@ -57,7 +59,7 @@ namespace Tests
                 poiAlterado = poi;
 
                 db.POIs.Update(poiAlterado);
-                db.SaveChanges();               
+                db.SaveChanges();
             }
 
             var dbfinal = new XYApp.Data.POIContexto();
@@ -70,9 +72,9 @@ namespace Tests
 
             poiAlterado = dbfinal.POIs.Find(poi.ID);
 
-            Assert.Null(poiAlterado);  
+            Assert.Null(poiAlterado);
         }
-        
+
         private static POI GerarPOIValido()
         {
             var poi = new Faker<POI>("pt_BR")
@@ -86,5 +88,52 @@ namespace Tests
 
             return poi;
         }
+        #endregion
+
+        #region Testes Servicos
+        [Fact(DisplayName = "Servico Listar")]
+        [Trait("Category", "Testes de Servico")]
+        public async Task POI_ListaServico_DeveRetornarSucesso()
+        {
+            // Arrange
+            var dbfinal = new XYApp.Data.POIContexto();
+            var controller = new XYApp.Controllers.POIsController(dbfinal);
+
+            // Act
+            IActionResult actionResult = await controller.Index("", null, null, null);
+
+            Assert.NotNull(actionResult);
+
+            ViewResult result = actionResult as ViewResult;
+
+            Assert.NotNull(result);
+
+            List<POI> pois = result.ViewData.Model as List<POI>;
+
+            Assert.True(pois.Count > 0);
+        }
+
+        [Fact(DisplayName = "Servico Detalhes")]
+        [Trait("Category", "Testes de Servico")]
+        public async Task POI_DetalheServico_DeveRetornarSucesso()
+        {
+            // Arrange
+            var dbfinal = new XYApp.Data.POIContexto();
+            var controller = new XYApp.Controllers.POIsController(dbfinal);
+
+            // Act
+            IActionResult actionResult = await controller.Details(5);
+
+            Assert.NotNull(actionResult);
+
+            ViewResult result = actionResult as ViewResult;
+
+            Assert.NotNull(result);
+
+            POI poi = result.ViewData.Model as POI;
+
+            Assert.True(poi.ID == 5);
+        }
+        #endregion
     }
 }
