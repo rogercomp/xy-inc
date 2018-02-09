@@ -9,7 +9,7 @@ namespace XYApp.Models
     {
         public int ID { get; set; }
         public string NomePOI { get; set; }
-        public int PntX { get; set; }
-        public int PntY { get; set; }
+        public Int32 PntX { get; set; }
+        public Int32 PntY { get; set; }
     }
 }
