@@ -23,6 +23,8 @@ Abrir a pasta Data na raiz do projeto edite o arquivo POIContexto.cs identifican
  
  Utilizado XUnit/Bogus/ para realizar testes de unidade
  
- Abrir pasta do projeto Tests por linha de comando 
+ Menu VS2017 Test/Windows/Test Explorer ou
+ 
+ Abra pasta do projeto Tests por linha de comando 
  
  executar o comando dotnet test e verificar a execução dos testes
